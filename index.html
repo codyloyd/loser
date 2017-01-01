@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>loser</title>
+</head>
+<style>
+  *{
+    color: #F6EAEA;
+    text-shadow: 1px 1px rgba(2,2,2,.2);
+  }
+  body{
+    background: #FF6060;
+    text-align: center;
+  }
+  button {
+    color: black;
+    text-shadow: none;
+    border: 1px solid #777;
+    border-radius: 2px;
+    background: #f6eaea;
+  }
+</style>
+<body>
+  <h3>loser</h3>
+  <h2>score: <span id="score">0</span></h2>
+  <button id='win' onclick="add(1)">WIN</button>
+  <button id='lose' onclick="add(10)">LOSE</button>
+
+<script>
+  let score = parseInt(localStorage.getItem('score')) || 0;
+  updateScore()
+  function add(num){
+    score += num;
+    localStorage.setItem('score', score);
+    updateScore()
+  }
+  function updateScore(){
+    const docScore = document.querySelector('#score')
+    docScore.textContent = score;
+  }
+
+</script>
+</body>
+</html>
