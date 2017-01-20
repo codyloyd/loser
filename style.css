@@ -1,0 +1,74 @@
+*{
+  color: #F6EAEA;
+  text-shadow: 1px 1px rgba(2,2,2,.2);
+  font-family: Raleway, sans-serif;
+  font-size: 1.3rem;
+}
+
+body{
+  background: #FF6060;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  font-size: 1.1rem;
+}
+
+#new_question_form {
+  display: none;
+  position: fixed;
+  top: 80px;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  padding-bottom: 15px;
+  width: 500px;
+  background: #FF6060;
+  border-radius: 4px;
+  border: 10px solid #FFF3F3;
+  -webkit-box-shadow: 12px 12px 5px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: 12px 12px 5px 0px rgba(0,0,0,0.3);
+  box-shadow: 12px 12px 5px 0px rgba(0,0,0,0.3);
+}
+
+button {
+  border: 1px solid #A61C1C;
+  background: #FF7575;
+  padding: 6px;
+  border-radius: 2px;
+  transition: all .1s;
+}
+
+button:hover {
+  transform: translate(-2px,-2px);
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.3);
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.3);
+}
+
+.responses-label {
+  margin: 0px;
+}
+
+input {
+  color: black;
+  border: 1px solid #A61C1C;
+  padding: 6px;
+}
+
+.radio {
+  font-size: 1rem;
+  display: inline-block;
+  position: relative;
+}
+
+input[type="radio"] {
+  display: inline-block;
+}
+

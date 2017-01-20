@@ -4,46 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1.0">
   <title>loser</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.js"></script>
+  <script src="https://wzrd.in/standalone/tape@latest"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<style>
-  *{
-    color: #F6EAEA;
-    text-shadow: 1px 1px rgba(2,2,2,.2);
-    font-family: sans-serif;
-    font-size: 1.3rem;
-  }
-  body{
-    background: #FF6060;
-    text-align: center;
-  }
-  button {
-    color: black;
-    font-size: 1.1rem;
-    text-shadow: none;
-    border: 1px solid #777;
-    border-radius: 2px;
-    background: #f6eaea;
-  }
-</style>
 <body>
-  <h3>loser</h3>
-  <h2>score: <span id="score">0</span></h2>
-  <button id='win' onclick="add(1)">WIN</button>
-  <button id='lose' onclick="add(10)">LOSE</button>
+  <h1>rejection => score: <span id='score'></span></h3>
+  <h3>Questions:</h3>
+  <button onClick="showQuestionForm()">ADD QUESTION</button>
+  <div id='questions_container'></div>
 
-<script>
-  let score = parseInt(localStorage.getItem('score')) || 0;
-  updateScore()
-  function add(num){
-    score += num;
-    localStorage.setItem('score', score);
-    updateScore()
-  }
-  function updateScore(){
-    const docScore = document.querySelector('#score')
-    docScore.textContent = score;
-  }
+ <div id='new_question_form'>
+  <h1>Add Question</h1>
+  <form id='add_question'>
+    <p>
+    <input type="text" name="person" placeholder="Person Asked">
+    </p>
+    <p>
+    <input type="text" name="question" placeholder="Question">
+    </p>
+    <h4 class="responses-label">response:</h4>
+    <label class="radio">
+      <input type="radio" name="response" value="Y">YES<br>
+    </label>
+    <label class="radio">
+      <input type="radio" name="response" value="N">NO<br>
+    </label>
+    <label class="radio">
+      <input type="radio" name="response" value="unanswered" checked>UNANSWERED
+    </label>
+  </form>
+  <button onClick="submitQuestion()">Submit</button> <button onClick="hideQuestionForm()">Cancel</button>
+ </div> 
 
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
