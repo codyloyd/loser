@@ -17,6 +17,13 @@ ul {
 
 li {
   font-size: 1.1rem;
+  transition: all .1s;
+}
+
+li:hover {
+  transform: translate(-2px,-2px);
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  cursor: pointer;
 }
 
 #new_question_form {
@@ -43,6 +50,7 @@ button {
   padding: 6px;
   border-radius: 2px;
   transition: all .1s;
+  cursor: pointer;
 }
 
 button:hover {

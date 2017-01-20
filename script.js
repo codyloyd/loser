@@ -37,7 +37,7 @@ const render = () => {
   const questions = store.getState();
   const lis = questions.map(q =>{
     return `
-    <li>
+    <li onClick="changeResponse(${q.id})">
     ${q.person}: 
     ${q.text} - 
     ${q.response}
@@ -76,6 +76,23 @@ const hideQuestionForm = () => {
   document.querySelector('input[name="question"]').value = ''
   const form = document.getElementById('new_question_form');
   form.style.display = "none"; 
+}
+
+const changeResponse = (id) => {
+  const q = store.getState().find(q => q.id == id);
+  let response;
+  if (q.response == 'Y') {
+    response = 'N'
+  } else if (q.response == 'N') {
+    response = 'unanswered'
+  } else {
+    response = 'Y'
+  }
+  store.dispatch({
+    type:'ANSWER_QUESTION',
+    response,
+    id
+  })
 }
 
 
