@@ -1,3 +1,4 @@
+//REDUX REDUCERS
 const questions = (state = [],action) => {
   switch(action.type) {
     case 'ADD_QUESTION':
@@ -12,8 +13,9 @@ const questions = (state = [],action) => {
         if (q.id != action.id) return q;
         q.response = action.response;
         return q;
-      })
-
+      });
+    case 'REMOVE_QUESTION':
+      return state.filter(q => q.id != action.id);
     default:
       return state;
   }
@@ -33,14 +35,16 @@ const calculateScore = (state) => {
 const {createStore} = Redux;
 const store = createStore(questions)
 
+//UI METHODS
 const render = () => {
   const questions = store.getState();
   const lis = questions.map(q =>{
     return `
-    <li onClick="changeResponse(${q.id})">
+    <li data-id=${q.id} onClick="changeResponse(${q.id})">
     ${q.person}: 
     ${q.text} - 
     ${q.response}
+    <i class="fa fa-trash delete" onClick="removeQuestion(${q.id})"></i>
     </li>`
   }).join("");
 
@@ -95,9 +99,21 @@ const changeResponse = (id) => {
   })
 }
 
+const removeQuestion = (id) => {
+  if (confirm("R U SURE?")) {
+    store.dispatch({
+      type: 'REMOVE_QUESTION',
+      id
+    })
+  }
+}
+
 
 store.subscribe(render)
 render()
+//localStorage stuff....
+
+//SUBSCRIBE & INITIAL RENDER
 
 store.dispatch({
   type:'ADD_QUESTION',

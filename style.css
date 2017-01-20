@@ -26,6 +26,16 @@ li:hover {
   cursor: pointer;
 }
 
+.delete {
+  font-size: .8rem;
+  color: #A61C1C;
+  transition: all;
+}
+
+.delete:hover {
+  color:black;
+}
+
 #new_question_form {
   display: none;
   position: fixed;
