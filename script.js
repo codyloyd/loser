@@ -1,3 +1,26 @@
+//localStorage stuff....
+const loadState = () => {
+  try {
+    const serializedState = localStorage.getItem('state')
+    if (serializedState == null) {
+      return undefined;
+    }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    return undefined;
+  }
+}
+
+const saveState = (state) => {
+  try {
+    console.log('saving')
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem('state', serializedState);
+  } catch (err) {
+    //cry :(
+  }
+}
+
 //REDUX REDUCERS
 const questions = (state = [],action) => {
   switch(action.type) {
@@ -33,7 +56,8 @@ const calculateScore = (state) => {
 }
 
 const {createStore} = Redux;
-const store = createStore(questions)
+const state = loadState();
+const store = createStore(questions,state)
 
 //UI METHODS
 const render = () => {
@@ -109,38 +133,40 @@ const removeQuestion = (id) => {
 }
 
 
+store.subscribe(() => saveState(store.getState()))
 store.subscribe(render)
 render()
-//localStorage stuff....
+
+
 
 //SUBSCRIBE & INITIAL RENDER
 
-store.dispatch({
-  type:'ADD_QUESTION',
-  id:0,
-  person: "mom",
-  text: "can I have a pony?",
-  response: undefined
-})
+// store.dispatch({
+//   type:'ADD_QUESTION',
+//   id:0,
+//   person: "mom",
+//   text: "can I have a pony?",
+//   response: undefined
+// })
 
-store.dispatch({
-  type:'ADD_QUESTION',
-  id:1,
-  person: "tony",
-  text: "can I have a pizza?",
-  response: undefined
-})
+// store.dispatch({
+//   type:'ADD_QUESTION',
+//   id:1,
+//   person: "tony",
+//   text: "can I have a pizza?",
+//   response: undefined
+// })
 
-store.dispatch({
-  type:'ANSWER_QUESTION',
-  id:1,
-  response: 'Y'
-})
+// store.dispatch({
+//   type:'ANSWER_QUESTION',
+//   id:1,
+//   response: 'Y'
+// })
 
-store.dispatch({
-  type:'ANSWER_QUESTION',
-  id:0,
-  response: 'N'
-})
+// store.dispatch({
+//   type:'ANSWER_QUESTION',
+//   id:0,
+//   response: 'N'
+// })
 
 
