@@ -47,9 +47,9 @@ const questions = (state = [],action) => {
 const calculateScore = (state) => {
   return state.reduce((score,q) => {
     if (q.response == 'N') {
-      return score += 10;
+      return score + 10;
     } else if (q.response == 'Y') {
-      return score += 1;
+      return score + 1;
     } 
     return score;
   },0)
